@@ -20,7 +20,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="relative py-16 md:py-24 bg-gradient-to-br from-lime-50 via-lime-100 to-lime-200">
+    <section className="relative py-16 md:py-24 bg-linear-to-br from-lime-50 via-lime-100 to-lime-200">
       <div className="container mx-auto px-4 md:px-6">
         <div className="bg-white/70 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-lime-100">
           <span className="inline-block bg-lime-200 text-lime-800 rounded-full px-5 py-1.5 text-sm font-semibold mb-4">
@@ -39,7 +39,7 @@ export default function FeaturesSection() {
               >
                 <feature.icon className="text-lime-500 text-5xl mb-5" />
                 <h3 className="text-black text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-6 flex-grow">{feature.desc}</p>
+                <p className="text-gray-600 mb-6 grow">{feature.desc}</p>
                 <button className="bg-lime-100 text-lime-800 rounded-full px-5 py-2.5 font-medium hover:bg-lime-200 transition self-start">
                   Download App →
                 </button>

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FaStar, FaEye, FaDollarSign, FaEllipsisH, FaGooglePlay, FaApple } from 'react-icons/fa';
+import { FaEllipsisH, FaGooglePlay, FaApple } from 'react-icons/fa';
 
 export default function HeroSection() {
   return (
@@ -19,13 +19,13 @@ export default function HeroSection() {
 
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 mb-10">
-        <button className="text-gray-800 bg-lime-400 text-brand-black rounded-full px-7 py-3.5 flex items-center gap-2.5 font-semibold hover:bg-lime-500 transition text-base shadow-md">
+        <button className="text-gray-800 bg-lime-400 rounded-full px-7 py-3.5 flex items-center justify-center gap-2.5 font-semibold hover:bg-lime-500 transition text-base shadow-md">
           Download App
           <FaGooglePlay />
           <FaApple />
         </button>
 
-        <button className="text-gray-800 bg-lime-200 rounded-full px-7 py-3.5 flex items-center gap-2.5 font-semibold hover:bg-lime-300 transition text-base">
+        <button className="text-gray-800 bg-lime-200 rounded-full px-7 py-3.5 flex items-center justify-center gap-2.5 font-semibold hover:bg-lime-300 transition text-base">
           Watch Demo
           <span className="text-lg">▶</span>
         </button>
@@ -40,17 +40,18 @@ export default function HeroSection() {
         </div>
         <span>Trusted by 3k+ students globally</span>
       </div>
-      {/* Hero Visual – Girl + Overlays */}
+
+      {/* Hero Visual Container */}
       <div className="relative max-w-5xl mx-auto mt-8 md:mt-12">
-        {/* Green circle bg */}
+        {/* Green glow background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-80 h-80 md:w-[500px] md:h-[500px] bg-lime-200 rounded-full blur-3xl opacity-70" />
         </div>
 
-        {/* Main image */}
+        {/* Main Image */}
         <div className="relative z-10">
           <Image
-            src="/images/girl-with-phone.png" // ← place your image in public/images/
+            src="/images/girl-with-phone.png"
             alt="Student using Pay4Me app"
             width={800}
             height={600}
@@ -59,43 +60,73 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Floating badges – adjust positions based on your exact image */}
-        {/* <div className="text-gray-900 absolute top-8 left-6 md:top-22 md:left-40 bg-white/90 backdrop-blur-sm rounded-lg px-10 py-8 shadow-md flex items-center gap-2 text-sm font-medium">
-          <span className="text-black-900">🏔️</span> Backed by Techstars.
-        </div> */}
-
-        {/* <div className="absolute top-28 left-16 md:top-90 md:left-30 bg-white/90 backdrop-blur-sm rounded-lg px-10 py-6 shadow-md flex items-center gap-2 text-sm">
-          <FaStar className="text-yellow-900" /><span className="text-black-900">5 Star Google Rating</span>
-        </div> */}
-
-        {/* Wallet card */}
-        <div className="absolute bottom-10 right-6 md:bottom-58 md:right-0 bg-white rounded-xl px-6 py-5 shadow-2xl w-72 md:w-80 border border-gray-100">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-gray-800 font-medium">Wallet Balance</span>
-            <div className="bg-brand-black text-black p-1.9 rounded-full">
-              <FaDollarSign size={14} />
+        {/* Wallet Card – top-right overlay, very responsive */}
+        <div
+          className={`
+            absolute z-2
+            top-3 right-3
+            w-[calc(100%-24px)] max-w-[240px] min-w-[200px]
+            p-3.5 text-xs leading-tight
+            sm:top-4 sm:right-4 sm:max-w-[280px] sm:p-4 sm:text-sm
+            md:top-5 md:right-6 md:max-w-[320px] md:p-5 md:text-base
+            lg:top-6 lg:right-8 lg:max-w-[360px] lg:p-6 lg:text-base
+            bg-white/94 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/60
+            transition-all duration-200 ease-out
+            hover:shadow-xl hover:-translate-y-0.5
+          `}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="font-semibold text-gray-800 text-xs sm:text-sm md:text-base">
+              Wallet Balance
+            </h3>
+            <div className="flex items-center gap-2">
+              <FaEllipsisH className="text-base text-gray-400 hover:text-gray-600 cursor-pointer transition-colors" />
+              <span className="text-base text-gray-500">$</span>
+              <button
+                className="text-base text-gray-500 hover:text-gray-700 focus:outline-none transition-colors"
+                aria-label="Toggle visibility"
+              >
+                👁️
+              </button>
             </div>
           </div>
 
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-900 text-2xl md:text-3xl font-bold">$22,850.00</span>
-            <FaEye className="text-gray-400 cursor-pointer" />
+          {/* Balance */}
+          <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3 tracking-tight">
+            $22,850.00
           </div>
 
-          <div className="flex justify-between gap-3">
-            <button className="flex-1 bg-gray-300 hover:bg-gray-500 rounded-lg py-2.5 text-sm font-medium transition">
+          {/* Buttons */}
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
+            <button
+              className="
+                bg-blue-600 hover:bg-blue-700 active:bg-blue-800
+                text-white font-medium text-xs sm:text-sm
+                py-2.5 px-4 rounded-lg shadow-sm
+                transition-all duration-150 active:scale-[0.98]
+              "
+              type="button"
+            >
               Fund Wallet ▼
             </button>
-            <button className="flex-1 bg-gray-300 hover:bg-gray-500 rounded-lg py-2.5 text-sm font-medium transition">
+
+            <button
+              className="
+                bg-gray-800 hover:bg-gray-900 active:bg-gray-950
+                text-white font-medium text-xs sm:text-sm
+                py-2.5 px-4 rounded-lg shadow-sm
+                transition-all duration-150 active:scale-[0.98]
+              "
+              type="button"
+            >
               Withdraw
             </button>
           </div>
-
-          <FaEllipsisH className="absolute top-3 right-3 text-gray-400" />
         </div>
       </div>
 
-      {/* Green divider line */}
+      {/* Green divider */}
       <div className="h-1.5 bg-lime-400 rounded-full mt-16 mx-auto max-w-3xl" />
     </section>
   );

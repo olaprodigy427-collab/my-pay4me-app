@@ -31,3 +31,13 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;   /* Pause on hover – great accessibility */
 }
+
+/* src/app/globals.css - add at the end */
+
+/* Subtle grid background - light gray lines/dots */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(200, 200, 200, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px; /* Adjust grid size: smaller = denser */
+}

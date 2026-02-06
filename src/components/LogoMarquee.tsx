@@ -18,11 +18,22 @@ export default function LogoMarquee() {
       </h2>
 
       <div className="relative w-full">
-        {/* Optional: subtle left/right fade edges */}
+        {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee gap-12 md:gap-16 lg:gap-20 items-center whitespace-nowrap">
+        {/* Faster marquee – adjust duration here */}
+        <div
+          className="
+            flex animate-marquee 
+            gap-12 md:gap-16 lg:gap-20 
+            items-center whitespace-nowrap
+            animation-duration-[2s]           /* ← main speed control (fast) */
+            md:animation-duration-[2.5s]      /* slightly faster on tablet */
+            lg:animation-duration-[0.67s]        /* fastest on desktop */
+            hover:pause                        /* optional: pause on hover */
+          "
+        >
           {[...partners, ...partners].map((partner, idx) => (
             <div
               key={idx}
@@ -31,8 +42,8 @@ export default function LogoMarquee() {
               <Image
                 src={partner.src}
                 alt={partner.name}
-                width={180}               // wider for better detail
-                height={80}               // ← increased from 50 → 80px (adjust to 100 if logos support it)
+                width={180}
+                height={80}
                 className="h-12 md:h-16 lg:h-20 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               />
             </div>
